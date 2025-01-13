@@ -4,8 +4,6 @@ scaling_out/
 *pycache*
 outputs/
 *.pkl
-scripts/
 lm_eval.egg-info/
 *.jsonl
-*.sh
 *.txt
