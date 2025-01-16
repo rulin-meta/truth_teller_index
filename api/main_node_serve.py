@@ -20,7 +20,7 @@ import hydra
 from omegaconf import OmegaConf
 from hydra.core.global_hydra import GlobalHydra
 
-endpoints_list = '/checkpoint/amaia/explore/rulin/truth_teller_index/running_ports_c4_wiki_ip_fixed.txt'
+endpoints_list = '/fsx-comem/rulin/truth_teller_index/running_ports_c4_wiki_ip_fixed.txt'
 
 def extract_running_endpoints(file_path=endpoints_list):
     """
@@ -264,7 +264,7 @@ def main_node_multithread_search(query, n_docs, subsample_ratio=1.0):
 
 
 class SearchQueue:
-    def __init__(self, log_queries=True):
+    def __init__(self, log_queries=False):
         self.queue = queue.Queue()
         self.lock = threading.Lock()
         self.current_search = None

@@ -72,6 +72,7 @@ class IVFFlatIndexer(object):
             self.index = faiss.read_index(index_path)
             self.index_id_to_db_id = self.load_index_id_to_db_id()
             self.index.nprobe = self.probe
+            import pdb; pdb.set_trace()
             # assert self.index.nprobe==self.index.nlist, f"nlist and nprobe are different {self.index.nprobe},{self.index.nlist}"
         else:
             self.index_id_to_db_id = []

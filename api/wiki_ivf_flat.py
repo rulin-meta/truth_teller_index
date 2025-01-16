@@ -51,15 +51,15 @@ class IVFFlatDatastoreAPI():
         ncentroids = 4096
         probe = 128
         
-        embed_dir = f'/checkpoint/amaia/explore/comem/data/scaling_out/embeddings/facebook/contriever-msmarco/{domain}/{num_shards}-shards'
+        embed_dir = f'/fsx-comem/rulin/data/truth_teller/scaling_out/embeddings/facebook/contriever-msmarco/{domain}/{num_shards}-shards'
         embed_paths = [os.path.join(embed_dir, filename) for filename in os.listdir(embed_dir) if filename.endswith('.pkl')]
         formatted_index_name = f"index_ivf_flat_ip.{sample_train_size}.{projection_size}.{ncentroids}.faiss"
-        index_dir = f'/checkpoint/amaia/explore/comem/data/scaling_out/embeddings/facebook/contriever-msmarco/{domain}/{num_shards}-shards/index_ivf_flat_ip_fixed_{shard_id}/'
+        index_dir = f'/fsx-comem/rulin/data/truth_teller/scaling_out/embeddings/facebook/contriever-msmarco/{domain}/{num_shards}-shards/index_ivf_flat_ip_fixed_{shard_id}/'
         os.makedirs(index_dir, exist_ok=True)
         index_path = os.path.join(index_dir, formatted_index_name)
         meta_file = os.path.join(index_dir, formatted_index_name+'.meta')
         trained_index_path = os.path.join(index_dir, formatted_index_name+'.trained')
-        passage_dir = f'/checkpoint/amaia/explore/comem/data/massive_ds_1.4t/scaling_out/passages/{domain}/{num_shards}-shards'
+        passage_dir = f'/fsx-comem/rulin/data/truth_teller/scaling_out/passages/{domain}/{num_shards}-shards'
         pos_map_save_path = os.path.join(index_dir, 'passage_pos_id_map.pkl')
         index = IVFFlatIndexer(
             embed_paths,
@@ -85,7 +85,7 @@ def get_datastore(cfg, shard_id):
     # test_search(ds)
     return ds
 
-@hydra.main(config_path="/checkpoint/amaia/explore/rulin/truth_teller_index/ric/conf", config_name="ivf_flat")
+@hydra.main(config_path="/fsx-comem/rulin/truth_teller_index/ric/conf", config_name="ivf_flat")
 def main(cfg):
     get_datastore(cfg, 0)
 
