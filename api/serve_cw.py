@@ -169,7 +169,7 @@ if __name__ == '__main__':
     
     
     """
-    curl -X POST rulin@a100-st-p4de24xlarge-178:41783/search -H "Content-Type: application/json" -d '{"query": "Where was Marie Curie born?", "n_docs": 1, "domains": "MassiveDS", "subsample_ratio": 0.5}'
+    curl -X POST rulin@a100-st-p4de24xlarge-66:47963/search -H "Content-Type: application/json" -d '{"query": "Where was Marie Curie born?", "n_docs": 1, "domains": "MassiveDS", "subsample_ratio": 0.5}'
     curl -X POST rulin@cw-h100-192-033:37439/search -H "Content-Type: application/json" -d '{"query": "Where was Marie Curie born?", "n_docs": 1, "domains": "rpj_c4"}'
     curl -X POST rulin@cw-h100-192-033:37439/search -H "Content-Type: application/json" -d '{"query": "2019 IIHF World U18 Championships 2019 IIHF World U18 Championships The 2019 Men's World U18 Ice Hockey Championships will be the 21rd such event hosted by the International Ice Hockey Federation. Teams will participate at several levels of competition. The competition will also serve as qualifications for the 2020 competition. One national teams, Luxembourg, will play in the World Championships for the first time in 2019. \"All times are local (UTC+2).\" The Group A tournament will be held in Grenoble, France from 14 to 20 April 2019. The Group B tournament will be held in Szekesfehervar, Hungary from 14 to 20 April 2019. The Group", "n_docs": 1, "domains": "rpj_c4 (nprobe=128)"}'
     curl -X POST rulin@cw-h100-196-057:51591/search -H "Content-Type: application/json" -d '{"query": "How much money, in euros, was the surgeon held responsible for Stella Obasanjo death ordered to pay her son?", "n_docs": 2, "domains": "rpj_c4 (nprobe=128)"}'

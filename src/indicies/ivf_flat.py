@@ -72,7 +72,6 @@ class IVFFlatIndexer(object):
             self.index = faiss.read_index(index_path)
             self.index_id_to_db_id = self.load_index_id_to_db_id()
             self.index.nprobe = self.probe
-            import pdb; pdb.set_trace()
             # assert self.index.nprobe==self.index.nlist, f"nlist and nprobe are different {self.index.nprobe},{self.index.nlist}"
         else:
             self.index_id_to_db_id = []
@@ -206,6 +205,7 @@ class IVFFlatIndexer(object):
     
     def _id2psg(self, shard_id, chunk_id):
         filename, position = self.psg_pos_id_map[shard_id][chunk_id]
+        filename = os.path.join('/fsx-comem/rulin/data/truth_teller/scaling_out', filename.split('scaling_out/')[-1])
         with open(filename, 'r') as file:
             file.seek(position)
             line = file.readline()

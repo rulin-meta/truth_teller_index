@@ -13,6 +13,7 @@
 
 
 cd /fsx-comem/rulin/truth_teller_index
+source /home/rulin/miniconda3/bin/activate
 conda activate scaling
 export PYTHONPATH=/fsx-comem/rulin/truth_teller_index
 
