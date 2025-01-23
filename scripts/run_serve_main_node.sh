@@ -13,7 +13,8 @@
 
 
 cd /checkpoint/amaia/explore/rulin/truth_teller_index
-conda activate scaling
+source /home/rulin/miniconda3/bin/activate
+conda activate vllm
 export PYTHONPATH=/checkpoint/amaia/explore/rulin/truth_teller_index
 
 
