@@ -264,7 +264,7 @@ def main_node_multithread_search(query, n_docs, subsample_ratio=1.0):
 
 
 class SearchQueue:
-    def __init__(self, log_queries=True):
+    def __init__(self, log_queries=False):
         self.queue = queue.Queue()
         self.lock = threading.Lock()
         self.current_search = None
