@@ -62,3 +62,11 @@ for FILE in $FILE_LIST; do
     mkdir -p "$(dirname "$FILE")"  # Create directories if they don't exist
     wget -O "$FILE" "https://huggingface.co/datasets/rulins/raw_data/resolve/main/${FILE}"
 done
+
+for SUBDIR in "redpajama_v1/common_crawl_2019_30" "redpajama_v1/common_crawl_2020_05" "redpajama_v1/common_crawl_2021_04" "redpajama_v1/common_crawl_2022_05" "redpajama_v1/common_crawl_2023_06"; do
+  FILE_LIST=$(curl -s "https://huggingface.co/api/datasets/rulins/raw_data/tree/main/${SUBDIR}" | jq -r '.[] | .path')
+  for FILE in $FILE_LIST; do
+      mkdir -p "$(dirname "$FILE")"  # Create directories if they don't exist
+      wget -O "$FILE" "https://huggingface.co/datasets/rulins/raw_data/resolve/main/${FILE}"
+  done
+done
