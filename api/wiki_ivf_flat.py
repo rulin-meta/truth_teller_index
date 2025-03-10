@@ -36,7 +36,6 @@ class IVFFlatDatastoreAPI():
     
     def search(self, query, n_docs=3):
         query_embedding = self.embed_query(query)
-        # import pdb; pdb.set_trace()
         searched_scores, searched_passages, db_ids  = self.index.search(query_embedding, n_docs)
         results = {'scores': searched_scores, 'passages': searched_passages, 'IDs': db_ids}
         return results
@@ -76,8 +75,13 @@ class IVFFlatDatastoreAPI():
         return index
     
     def embed_query(self, query):
-        query_embbeding = embed_queries(self.cfg.evaluation.search, [query], self.query_encoder, self.query_tokenizer, self.cfg.model.query_encoder)
-        return query_embbeding
+        if isinstance(query, str):
+            query_embedding = embed_queries(self.cfg.evaluation.search, [query], self.query_encoder, self.query_tokenizer, self.cfg.model.query_encoder)
+        elif isinstance(query, list):
+            query_embedding = embed_queries(self.cfg.evaluation.search, query, self.query_encoder, self.query_tokenizer, self.cfg.model.query_encoder)
+        else:
+            raise AttributeError(f"Query is not a string nor list!")
+        return query_embedding
     
 
 def get_datastore(cfg, shard_id):
@@ -94,7 +98,8 @@ def test_search(ds):
     query2 = "who wrote he ain't heavy he's my brother lyrics?"  # 'scores': array([[33.60194 , 41.798004, 43.465225]], dtype=float32) 'IDs': [[[2, 361677], [5, 1717105], [2, 361675]]]
     # query: 'scores': array([[3540.2017, 3541.064 , 3541.2776]] 'IDs': [[[4, 270110], [6, 1770473], [4, 270109]]]
     # query2: 'scores': array([[3537.0122, 3543.1533, 3544.3677]] 'IDs': [[[4, 270110], [6, 1770473], [3, 1408820]]]
-    search_results = ds.search(query, 1)
+    query_list = [query, query2]
+    search_results = ds.search(query_list, 1)
     print(search_results)
     pdb.set_trace()
 
