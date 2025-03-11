@@ -9,10 +9,10 @@ If the API has been served, you can either send single or bulk query requests to
 
 ```bash
 # single-query request
-curl -X POST rulin@cw-h100-217-015:38809/search -H "Content-Type: application/json" -d '{"query": "Where was Marie Curie born?", "n_docs": 1, "domains": "MassiveDS"}'
+curl -X POST rulin@cw-h100-220-009:41077/search -H "Content-Type: application/json" -d '{"query": "Where was Marie Curie born?", "n_docs": 1, "domains": "MassiveDS"}'
 
 # multi-query request
-curl -X POST rulin@cw-h100-217-015:38809/search -H "Content-Type: application/json" -d '{"query": ["Where was Marie Curie born?", "What is the capital of France?", "Who invented the telephone?"], "n_docs": 2, "domains": "MassiveDS"}'
+curl -X POST rulin@cw-h100-197-159:34621/search -H "Content-Type: application/json" -d '{"query": ["Where was Marie Curie born?", "What is the capital of France?", "Who invented the telephone?"], "n_docs": 2, "domains": "MassiveDS"}'
 ```
 
 Example output of a multi-query request:

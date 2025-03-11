@@ -20,7 +20,9 @@ import hydra
 from omegaconf import OmegaConf
 from hydra.core.global_hydra import GlobalHydra
 
-endpoints_list = '/checkpoint/amaia/explore/rulin/truth_teller_index/running_ports_c4_wiki_bulk_queries.txt'
+
+ports_txt_file = os.getenv('PORTS_FILE', 'running_ports_c4_wiki_bulk_queries.txt')
+endpoints_list = f'/checkpoint/amaia/explore/rulin/truth_teller_index/{ports_txt_file}'
 
 def extract_running_endpoints(file_path=endpoints_list):
     """

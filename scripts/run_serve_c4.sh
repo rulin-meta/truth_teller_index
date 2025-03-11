@@ -19,6 +19,8 @@ conda activate vllm
 export PYTHONPATH=/checkpoint/amaia/explore/rulin/truth_teller_index
 
 
+export PORTS_FILE=running_ports_c4_wiki_bulk_queries_3.txt
+
 for i in {0..6}; do
   CHUNK_ID=$((8*SLURM_ARRAY_TASK_ID+i))
   echo "C4 Chunk ID: $CHUNK_ID"

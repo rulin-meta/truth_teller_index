@@ -18,5 +18,5 @@ conda activate vllm
 export PYTHONPATH=/checkpoint/amaia/explore/rulin/truth_teller_index
 
 
-
+export PORTS_FILE=running_ports_c4_wiki_bulk_queries_3.txt
 python /checkpoint/amaia/explore/rulin/truth_teller_index/api/main_node_serve.py

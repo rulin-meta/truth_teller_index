@@ -152,10 +152,11 @@ def main():
     port = find_free_port()
     server_id = socket.gethostname()
     chunk_id = os.getenv('CHUNK_ID')
+    ports_txt_file = os.getenv('PORTS_FILE', 'running_ports_c4_wiki_bulk_queries.txt')
     serve_info = {'server_id': server_id, 'port': port, 'chunk_id': int(os.getenv('CHUNK_ID'))}
     endpoint = f'rulin@{server_id}:{port}/search'
     print(f'Running at {endpoint}')
-    with open('running_ports_c4_wiki_bulk_queries.txt', 'a+') as fout:
+    with open(ports_txt_file, 'a+') as fout:
         fout.write(f'Chunk: {chunk_id}\n')
         fout.write(endpoint)
         fout.write('\n')
