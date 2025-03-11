@@ -353,7 +353,10 @@ def search():
                 n_docs=request_json['n_docs'],
             )
         # Perform the search synchronously, but queue if another search is in progress
-        results = search_queue.search(item)
+        if not item.query:
+            results = None
+        else:
+            results = search_queue.search(item)
         print(results)
         return jsonify({
             "message": f"Search completed for '{item.query}' from {item.domains}",
