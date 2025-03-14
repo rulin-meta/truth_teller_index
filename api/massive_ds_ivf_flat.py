@@ -35,7 +35,12 @@ class IVFFlatDatastoreAPI():
         # self.query_encoder = self.query_encoder.to(device)
     
     def search(self, query, n_docs=3):
-        query_embedding = self.embed_query(query)
+        if isinstance(query, str):
+            query_embedding = embed_queries(self.cfg.evaluation.search, [query], self.query_encoder, self.query_tokenizer, self.cfg.model.query_encoder)
+        elif isinstance(query, list):
+            query_embedding = embed_queries(self.cfg.evaluation.search, query, self.query_encoder, self.query_tokenizer, self.cfg.model.query_encoder)
+        else:
+            raise AttributeError(f"Query is not a string nor list!")
         searched_scores, searched_passages, db_ids  = self.index.search(query_embedding, n_docs)
         results = {'scores': searched_scores, 'passages': searched_passages, 'IDs': db_ids}
         return results
